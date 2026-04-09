@@ -8,13 +8,18 @@
 body {
 margin:0;
 font-family:Arial;
-text-align:center;
-background: linear-gradient(to right, #141e30, #243b55);
+background:#0f2027;
 color:white;
+text-align:center;
+}
+
+.hero {
+padding:60px 20px;
+background:linear-gradient(to right,#000428,#004e92);
 }
 
 .container {
-padding:40px 20px;
+padding:30px 20px;
 }
 
 input {
@@ -44,25 +49,27 @@ border-radius:10px;
 display:inline-block;
 }
 
-.whatsapp {
-background:#25D366;
-}
-
 .section {
 margin-top:40px;
 }
 
+.whatsapp {
+background:#25D366;
+}
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
+<!-- HERO -->
+<div class="hero">
 <h1>☀️ Sunsmarttech</h1>
 <h2>Instant Solar Quotation</h2>
+<p>Save electricity bill & switch to solar ⚡</p>
+</div>
 
-<p>Get accurate solar price in seconds ⚡</p>
+<!-- CALCULATOR -->
+<div class="container">
 
 <input type="number" id="bill" placeholder="Enter Monthly Bill (₹)"><br>
 
@@ -70,14 +77,25 @@ margin-top:40px;
 
 <div id="result"></div>
 
-<div class="section">
 <a id="waLink" href="#" target="_blank">
 <button class="whatsapp">Chat on WhatsApp</button>
 </a>
-</div>
 
 </div>
 
+<!-- SAVINGS -->
+<div class="section">
+<h2>💰 Your Savings</h2>
+<p id="savings"></p>
+</div>
+
+<!-- SUBSIDY -->
+<div class="section">
+<h2>🇮🇳 Government Subsidy</h2>
+<p>Up to ₹78,000 subsidy available on rooftop solar*</p>
+</div>
+
+<!-- WHY US -->
 <div class="section">
 <h2>Why Choose Us?</h2>
 <p>✔ Trusted Solar Experts</p>
@@ -97,10 +115,16 @@ function calc(){
  let system = bill / 1000;
  let price = system * 60000;
 
+ let yearlySave = bill * 12;
+ let saving25yr = yearlySave * 25;
+
  let message = "Hello, my bill is ₹" + bill + ". Please share solar details.";
 
  document.getElementById("result").innerHTML =
  "<div class='result-box'>⚡ System: " + system.toFixed(1) + " kW <br> 💰 Cost: ₹" + price.toLocaleString() + "</div>";
+
+ document.getElementById("savings").innerHTML =
+ "Monthly Bill: ₹" + bill + "<br> Yearly Saving: ₹" + yearlySave.toLocaleString() + "<br> 25 Year Saving: ₹" + saving25yr.toLocaleString();
 
  document.getElementById("waLink").href =
  "https://wa.me/919236614331?text=" + encodeURIComponent(message);
