@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sunsmarttech Solar Quote</title>
+</head>
+
+<body style="font-family:Arial; text-align:center; padding:50px;">
+
+<h1>☀️ Sunsmarttech</h1>
+<h2>Instant Solar Quotation</h2>
+
+<p>Enter your electricity bill to get instant solar cost ⚡</p>
+
+<input type="number" id="bill" placeholder="Enter Monthly Bill (₹)" 
+style="padding:10px; width:250px;"><br><br>
+
+<button onclick="calc()" 
+style="padding:10px 20px; background:black; color:white;">
+Get Quote
+</button>
+
+<h3 id="result"></h3>
+
+<script>
+function calc(){
+ let bill = document.getElementById("bill").value;
+
+ if(bill==""){
+  alert("Enter bill first");
+  return;
+ }
+
+ let system = bill / 1000;
+ let price = system * 60000;
+
+ document.getElementById("result").innerHTML =
+ "⚡ System: " + system.toFixed(1) + " kW <br> 💰 Cost: ₹" + price;
+}
+</script>
+
+</body>
+</html>
