@@ -1,55 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sunsmarttech Solar Quote</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunsmarttech Solar Quote</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin:0;
-      font-family: Arial;
-      text-align:center;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color:white;
-    }
+<style>
+body {
+margin:0;
+font-family:Arial;
+text-align:center;
+background: linear-gradient(to right, #141e30, #243b55);
+color:white;
+}
 
-    .container {
-      padding:50px 20px;
-    }
+.container {
+padding:40px 20px;
+}
 
-    input {
-      padding:12px;
-      width:250px;
-      border:none;
-      border-radius:5px;
-      margin-top:10px;
-    }
+input {
+padding:12px;
+width:250px;
+border:none;
+border-radius:5px;
+margin-top:10px;
+}
 
-    button {
-      padding:12px 20px;
-      margin-top:15px;
-      background:#00c853;
-      color:white;
-      border:none;
-      border-radius:5px;
-      cursor:pointer;
-    }
+button {
+padding:12px 20px;
+margin-top:15px;
+background:#00c853;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
 
-    button:hover {
-      background:#009624;
-    }
+.result-box {
+margin-top:20px;
+background:white;
+color:black;
+padding:15px;
+border-radius:10px;
+display:inline-block;
+}
 
-    .box {
-      margin-top:20px;
-      font-size:20px;
-      font-weight:bold;
-    }
+.whatsapp {
+background:#25D366;
+}
 
-    .whatsapp {
-      margin-top:20px;
-      background:#25D366;
-    }
-  </style>
+.section {
+margin-top:40px;
+}
+
+</style>
 </head>
 
 <body>
@@ -65,12 +68,21 @@
 
 <button onclick="calc()">Get Instant Quote</button>
 
-<div class="box" id="result"></div>
+<div id="result"></div>
 
-<a href="https://wa.me/919236614331" target="_blank">
+<div class="section">
+<a id="waLink" href="#" target="_blank">
 <button class="whatsapp">Chat on WhatsApp</button>
 </a>
+</div>
 
+</div>
+
+<div class="section">
+<h2>Why Choose Us?</h2>
+<p>✔ Trusted Solar Experts</p>
+<p>✔ Best Price Guarantee</p>
+<p>✔ Fast Installation</p>
 </div>
 
 <script>
@@ -85,8 +97,13 @@ function calc(){
  let system = bill / 1000;
  let price = system * 60000;
 
+ let message = "Hello, my bill is ₹" + bill + ". Please share solar details.";
+
  document.getElementById("result").innerHTML =
- "⚡ System Size: " + system.toFixed(1) + " kW <br> 💰 Estimated Cost: ₹" + price.toLocaleString();
+ "<div class='result-box'>⚡ System: " + system.toFixed(1) + " kW <br> 💰 Cost: ₹" + price.toLocaleString() + "</div>";
+
+ document.getElementById("waLink").href =
+ "https://wa.me/919236614331?text=" + encodeURIComponent(message);
 }
 </script>
 
